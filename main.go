@@ -50,3 +50,19 @@ func main() {
 	log.Println("Server started on :8058")
 	log.Fatal(http.ListenAndServe(":8058", nil))
 }
+
+
+/*
+to run...
+
+docker build -t rate-limiter .
+docker run -p 8058:8058 rate-limiter
+
+then test with curl...
+
+curl -X POST http://localhost:8058/check \
+  -H "Content-Type: application/json" \
+  -d '{"key":"user123", "limit":5, "window":60}'
+
+
+*/
